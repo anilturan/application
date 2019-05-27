@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import styled,{ css } from 'styled-components'
 
 export const sizes = {
     xl: 2800,
@@ -22,3 +22,25 @@ const media = Object.keys(sizes).reduce((accumulator, label) => {
 
 }, {});
 export default media;
+
+
+
+function getWidthString(span) {
+  if (!span) return;
+  let width = span / 12 * 90;
+  return `width:${width}%;`;
+}
+
+export const Div = styled.div`
+
+${({ xs }) => (xs ? getWidthString(xs) : "width:100%")};
+@media only screen and (min-width:768px){
+  ${({ sm }) => sm && getWidthString(sm)};
+}
+@media only screen and (min-width:992px){
+  ${({ md }) => md && getWidthString(md)};
+}
+@media only screen and (min-width:1200px){
+  ${({ lg }) => lg && getWidthString(lg)};
+}
+`;

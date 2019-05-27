@@ -2,15 +2,21 @@ import React, { Component } from 'react'
 import Header from '../../components/composite/header/index'
 import styled from 'styled-components'
 import bgImage from '../../assets/image/bg.jpg'
-import media from '../../util/responsive/index'
+import media from '../../util/responsive/index';
+import { ConverterCard } from '../../components/UI/ConverterCard/index'
 export class Template extends Component {
     render() {
         return (
             <HeaderContent>
-                <Image>
-                <Header />
+                <ImageContent>
+                    <HeaderMenu />
+                    <Image src={bgImage} />
+                    <ConverterCard sm={"4"} lg={"6"} > text</ConverterCard>
+                    <ConverterCard sm={"4"} lg={"6"} > text</ConverterCard>
+                    <ConverterCard sm={"4"} lg={"6"} > text</ConverterCard>
+                    <ConverterCard sm={"4"} lg={"6"} > text</ConverterCard>
 
-                </Image>
+                </ImageContent>
             </HeaderContent>
         )
     }
@@ -18,35 +24,27 @@ export class Template extends Component {
 
 const HeaderContent = styled.div`
 /* background-color:yellow; */
-padding: 1em;
+/* padding: 1em; */
 width:100%;
 
 
     `;
- 
-const Image = styled.div`
-height:600px;
-background-image:${`url(${bgImage})`};
-${media.iphone5`
-width:320px;
-`}
-${media.xs`
- width:575px;
-`}
-${media.sm`
-width:767px;
-`}
-${media.md`
-width:991px;
 
-`}
-${media.lg`
-width:1199px;
+const Image = styled.img`
+    width: 100%;
+    min-height: 125px;
+    /* border-top-right-radius: 20px;
+    border-top-left-radius: 20px; */
+    object-fit: cover;
+    position:relative;
+    max-height:600px;
+ `;
+const ImageContent = styled.div`
+    height:600px;
+    position:absolute;
 
-`}
-${media.xl`
-width:2800px;
-
-`}
 `;
 
+const HeaderMenu = styled(Header)`
+    position:relative;
+`;
